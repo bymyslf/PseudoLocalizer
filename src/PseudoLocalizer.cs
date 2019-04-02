@@ -118,13 +118,28 @@ namespace PseudoLocalizer
             {
                 var ch = text[i];
 
-                var transformed = Transform(ch);
-                sb.Append(transformed);
-
-                // Duplicate vowels to emulate ~30% longer text
-                if (IsVowel(ch))
+                // Potential placeholder(e.g. "{0} or {0:dd/MM/yyyy}")
+                if (ch == '{' && i < text.Length - 2)
                 {
+                    sb.Append(ch);
+
+                    while (i < text.Length - 1 && text[++i] != '}')
+                    {
+                        sb.Append(text[i]);
+                    }
+
+                    sb.Append(text[i]);
+                }
+                else
+                {
+                    var transformed = Transform(ch);
                     sb.Append(transformed);
+
+                    // Duplicate vowels to emulate ~30% longer text
+                    if (IsVowel(ch))
+                    {
+                        sb.Append(transformed);
+                    }
                 }
             }
 

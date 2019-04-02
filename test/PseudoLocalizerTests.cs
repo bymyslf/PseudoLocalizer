@@ -42,5 +42,17 @@ namespace PseudoLocalizer.Tests
             Assert.Equal(expected, result);
             Assert.True(result.Length > text.Length);
         }
+
+        [Fact]
+        public void PseudoLocalize_TextWithPlaceholder_ReturnsTransformedTextWithPlaceholder()
+        {
+            var text = "Hello {0}";
+            var expected = "[Ĥééļļöö {0}]";
+
+            var result = PseudoLocalizer.PseudoLocalize(text);
+
+            Assert.Equal(expected, result);
+            Assert.True(result.Length > text.Length);
+        }
     }
 }
