@@ -20,47 +20,44 @@ namespace PseudoLocalizer.Tests
             Assert.Equal(string.Empty, result);
         }
 
-        [Fact]
-        public void PseudoLocalize_TextIsNotNullOrEmpty_ReturnsTransformedText()
+        [Theory]
+        [InlineData("TXT", "[ŢẊŢ]")]
+        [InlineData("Some text to transform", "[Šööɱéé ţééẋţ ţöö ţŕååñšƒööŕɱ]")]
+        public void PseudoLocalize_TextIsNotNullOrEmpty_ReturnsTransformedText(string text, string expected)
         {
-            var text = "TXT";
-            var expected = "[ŢẊŢ]";
-
             var result = PseudoLocalizer.PseudoLocalize(text);
 
             Assert.Equal(expected, result);
         }
 
-        [Fact]
-        public void PseudoLocalize_TextWithVowels_ReturnsTransformedTextWithDuplicatedVowels()
+        [Theory]
+        [InlineData("Hello", "[Ĥééļļöö]")]
+        [InlineData("Hello John", "[Ĥééļļöö Ĵööĥñ]")]
+        public void PseudoLocalize_TextWithVowels_ReturnsTransformedTextWithDuplicatedVowels(string text, string expected)
         {
-            var text = "Hello";
-            var expected = "[Ĥééļļöö]";
-
-            var result = PseudoLocalizer.PseudoLocalize(text);
-
-            Assert.Equal(expected, result);
-            Assert.True(result.Length > text.Length);
-        }
-
-        [Fact]
-        public void PseudoLocalize_TextWithPlaceholder_ReturnsTransformedTextWithPlaceholder()
-        {
-            var text = "Hello {0}";
-            var expected = "[Ĥééļļöö {0}]";
-
             var result = PseudoLocalizer.PseudoLocalize(text);
 
             Assert.Equal(expected, result);
             Assert.True(result.Length > text.Length);
         }
 
-        [Fact]
-        public void PseudoLocalize_TextWithHtmlTag_ReturnsTransformedTextWithHtmlTag()
+        [Theory]
+        [InlineData("Hello {0}", "[Ĥééļļöö {0}]")]
+        [InlineData("Use {0:d/M/yyyy HH:mm:ss} datetime format", "[ÛÛšéé {0:d/M/yyyy HH:mm:ss} ðååţééţîîɱéé ƒööŕɱååţ]")]
+        public void PseudoLocalize_TextWithPlaceholder_ReturnsTransformedTextWithPlaceholder(string text, string expected)
         {
-            var text = "Hello <strong>John</strong>";
-            var expected = "[Ĥééļļöö <strong>Ĵööĥñ</strong>]";
+            var result = PseudoLocalizer.PseudoLocalize(text);
 
+            Assert.Equal(expected, result);
+            Assert.True(result.Length > text.Length);
+        }
+
+        [Theory]
+        [InlineData("Hello <strong>John</strong>", "[Ĥééļļöö <strong>Ĵööĥñ</strong>]")]
+        [InlineData("Click <a href=\"https://www.google.com/\">here</a> and google it.", "[Çļîîçķ <a href=\"https://www.google.com/\">ĥééŕéé</a> ååñð ĝööööĝļéé îîţ·]")]
+        [InlineData("Line <br /> break", "[Ļîîñéé <br /> ƀŕééååķ]")]
+        public void PseudoLocalize_TextWithHtmlTag_ReturnsTransformedTextWithHtmlTag(string text, string expected)
+        {
             var result = PseudoLocalizer.PseudoLocalize(text);
 
             Assert.Equal(expected, result);
