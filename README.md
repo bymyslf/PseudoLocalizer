@@ -6,7 +6,6 @@ IBM suggests that on average, we should expect any English string to inflate by 
 
 ## Other Resources
 
-* [IBM Globalization Guidelines](http://www-01.ibm.com/software/globalization/guidelines/index.html)
 * [What is Pseudo-Localization?](https://www.globalizationpartners.com/2015/04/17/what-is-pseudo-localization/)
 * [Pseudolocalization](https://en.wikipedia.org/wiki/Pseudolocalization)
 * [Pseudo Localization @ Netflix](https://medium.com/netflix-techblog/pseudo-localization-netflix-12fff76fbcbe)
