@@ -118,19 +118,32 @@ namespace PseudoLocalizer
             {
                 var ch = text[i];
 
-                if (_replacements.TryGetValue(ch, out char result))
+                var transformed = Transform(ch);
+                sb.Append(transformed);
+
+                // Duplicate vowels to emulate ~30% longer text
+                if (IsVowel(ch))
                 {
-                    sb.Append(result);
-                }
-                else
-                {
-                    sb.Append(ch);
+                    sb.Append(transformed);
                 }
             }
 
             sb.Append(']');
 
             return sb.ToString();
+
+            bool IsVowel(char ch)
+               => _vowels.Contains(ch);
+
+            char Transform(char ch)
+            {
+                if (_replacements.TryGetValue(ch, out char result))
+                {
+                    return result;
+                }
+
+                return ch;
+            }
         }
     }
 }

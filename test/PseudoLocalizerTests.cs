@@ -30,5 +30,17 @@ namespace PseudoLocalizer.Tests
 
             Assert.Equal(expected, result);
         }
+
+        [Fact]
+        public void PseudoLocalize_TextWithVowels_ReturnsTransformedTextWithDuplicatedVowels()
+        {
+            var text = "Hello";
+            var expected = "[Ĥééļļöö]";
+
+            var result = PseudoLocalizer.PseudoLocalize(text);
+
+            Assert.Equal(expected, result);
+            Assert.True(result.Length > text.Length);
+        }
     }
 }
