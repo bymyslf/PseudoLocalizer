@@ -10,12 +10,12 @@ IBM suggests that on average, we should expect any English string to inflate by 
 
 Here are the various elements of the transformation:
 
-* Start and end markers
-..* All strings are encapsulated in [ ]
-* Transformation of characters applying accents
-..* Formatting placeholders and HTML tags are ignored
-* Padding text
-..* Simulates translation induced expansion by doubling all vowels
+* **Start and end markers**
+  * All strings are encapsulated in [ ]
+* **Transformation of characters applying accents**
+  * Formatting placeholders and HTML tags are ignored
+* **Padding text**
+  * Simulates translation induced expansion by doubling all vowels
 
 ## Other Resources
 
