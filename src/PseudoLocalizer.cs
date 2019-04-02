@@ -118,7 +118,7 @@ namespace PseudoLocalizer
             {
                 var ch = text[i];
 
-                // Potential placeholder(e.g. "{0} or {0:dd/MM/yyyy}")
+                // Potential placeholder(e.g. "{0}" or "{0:dd/MM/yyyy}")
                 if (ch == '{' && i < text.Length - 2)
                 {
                     sb.Append(ch);
@@ -129,6 +129,27 @@ namespace PseudoLocalizer
                     }
 
                     sb.Append(text[i]);
+                }
+                // Potential HTML tag (e.g. "<a/>" or "<p></p>")
+                else if (ch == '<' && i < text.Length - 2)
+                {
+                    var next = text[i + 1];
+                    var indexBefore = i;
+
+                    sb.Append(ch);
+
+                    if (char.IsLetter(next) || next == '/')
+                    {
+                        while (i < text.Length - 1 && text[++i] != '>')
+                        {
+                            sb.Append(text[i]);
+                        }
+                    }
+
+                    if (i != indexBefore)
+                    {
+                        sb.Append(text[i]);
+                    }
                 }
                 else
                 {

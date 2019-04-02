@@ -54,5 +54,17 @@ namespace PseudoLocalizer.Tests
             Assert.Equal(expected, result);
             Assert.True(result.Length > text.Length);
         }
+
+        [Fact]
+        public void PseudoLocalize_TextWithHtmlTag_ReturnsTransformedTextWithHtmlTag()
+        {
+            var text = "Hello <strong>John</strong>";
+            var expected = "[Ĥééļļöö <strong>Ĵööĥñ</strong>]";
+
+            var result = PseudoLocalizer.PseudoLocalize(text);
+
+            Assert.Equal(expected, result);
+            Assert.True(result.Length > text.Length);
+        }
     }
 }
