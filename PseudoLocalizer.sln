@@ -5,11 +5,11 @@ VisualStudioVersion = 15.0.28307.329
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{3B11481E-D7D2-4209-A1BB-EAE9D9E89001}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{6C103639-32D5-4C59-B34E-9ECCE40A7381}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{6C103639-32D5-4C59-B34E-9ECCE40A7381}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PseudoLocalizer", "src\PseudoLocalizer.csproj", "{4B095883-6E34-4D3D-841E-2FE9BF3EC695}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PseudoLocalizer", "src\PseudoLocalizer\PseudoLocalizer.csproj", "{4B095883-6E34-4D3D-841E-2FE9BF3EC695}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PseudoLocalizer.Tests", "test\PseudoLocalizer.Tests.csproj", "{07A81888-6F2B-4106-A396-51C098CF5FC5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PseudoLocalizer.Tests", "tests\PseudoLocalizer.Tests\PseudoLocalizer.Tests.csproj", "{07A81888-6F2B-4106-A396-51C098CF5FC5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
