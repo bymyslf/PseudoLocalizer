@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard1.1</TargetFramework>
+    <TargetFramework>netstandard1.3</TargetFramework>
     <Description>Small .NET Standard Pseudol10n library.</Description>
     <PackageId>PseudoLocalizer</PackageId>
     <Authors>bymyslf (Luís Barbosa)</Authors>
@@ -10,11 +10,11 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
-    <PackageTags>pseudolocale;pseudolocalization;pseudol10n</PackageTags>
+    <PackageTags>pseudo;locale;pseudolocale;pseudolocalization;pseudol10n;i18n;internationalization</PackageTags>
     <NoWarn>$(NoWarn);NU5105;1701;1702;1705;1591</NoWarn>
     <LangVersion>latest</LangVersion>
-    <DebugType>full</DebugType>
-    <Version>1.1.0</Version>
+    <DebugType>pdbonly</DebugType>
+    <Version>1.1.0.1</Version>
   </PropertyGroup>
 
 </Project>
