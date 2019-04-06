@@ -1,0 +1,14 @@
+language: csharp
+mono: none
+dotnet: 2.2.101
+branches:
+  only:
+  - master
+  - feature/*
+script: "./build.sh"
+git:
+  depth: false
+matrix:
+  include:
+    - os: linux
+    - os: osx
