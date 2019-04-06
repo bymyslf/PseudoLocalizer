@@ -4,4 +4,10 @@
     <TargetFramework>netstandard1.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Update="contentFiles\cs\PseudoLocalizer.cs.pp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

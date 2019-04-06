@@ -7,9 +7,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{3B11481E-D7D
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{6C103639-32D5-4C59-B34E-9ECCE40A7381}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{6127A813-BD1C-498A-84AC-6D36AEBC2D5B}"
+EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PseudoLocalizer", "src\PseudoLocalizer\PseudoLocalizer.csproj", "{4B095883-6E34-4D3D-841E-2FE9BF3EC695}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PseudoLocalizer.Tests", "tests\PseudoLocalizer.Tests\PseudoLocalizer.Tests.csproj", "{07A81888-6F2B-4106-A396-51C098CF5FC5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Build", "build\Build.csproj", "{F62D7A1C-C043-4F6B-995A-0B2831A686E4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,6 +29,10 @@ Global
 		{07A81888-6F2B-4106-A396-51C098CF5FC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07A81888-6F2B-4106-A396-51C098CF5FC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{07A81888-6F2B-4106-A396-51C098CF5FC5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F62D7A1C-C043-4F6B-995A-0B2831A686E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F62D7A1C-C043-4F6B-995A-0B2831A686E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F62D7A1C-C043-4F6B-995A-0B2831A686E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F62D7A1C-C043-4F6B-995A-0B2831A686E4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -32,6 +40,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{4B095883-6E34-4D3D-841E-2FE9BF3EC695} = {3B11481E-D7D2-4209-A1BB-EAE9D9E89001}
 		{07A81888-6F2B-4106-A396-51C098CF5FC5} = {6C103639-32D5-4C59-B34E-9ECCE40A7381}
+		{F62D7A1C-C043-4F6B-995A-0B2831A686E4} = {6127A813-BD1C-498A-84AC-6D36AEBC2D5B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9574A7D2-7099-4636-A028-095C1D72F16D}

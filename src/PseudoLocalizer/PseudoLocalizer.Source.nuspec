@@ -1,0 +1,22 @@
+﻿<?xml version="1.0"?>
+<package>
+  <metadata minClientVersion="3.3">
+    <authors>Luís Barbosa</authors>
+    <description>Supported platforms: .NET Standard 1.1 onwards.
+
+This is the PseudoLocalizer source code package. Also available as a binary package (PseudoLocalizer). If your project is an application or library which is not packaged and/or exported for use in other solutions then the binary package is usually the best choice. If you are writing a library which is packaged and/or exported for use in other solutions then the source code package is usually the best choice.
+</description>
+    <developmentDependency>true</developmentDependency>
+    <id>PseudoLocalizer.Source</id>
+    <license type="expression">MIT</license>
+    <projectUrl>https://github.com/bymyslf/PseudoLocalizer</projectUrl>
+    <summary>Small .NET Standard Pseudol10n library. This is the source code package. Also available as a binary package (PseudoLocalizer).</summary>
+    <version>1.0.0</version>
+    <contentFiles>
+      <files include="cs/PseudoLocalizer.cs.pp" />
+    </contentFiles>
+  </metadata>
+  <files>
+    <file src="contentFiles/cs/PseudoLocalizer.cs.pp"  target="contentFiles/cs/PseudoLocalizer.cs.pp" />
+  </files>
+</package>
