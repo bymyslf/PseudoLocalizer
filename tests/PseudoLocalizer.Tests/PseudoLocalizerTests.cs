@@ -1,4 +1,5 @@
-﻿using Xunit;
+﻿using Shouldly;
+using Xunit;
 
 namespace PseudoLocalizer.Tests
 {
@@ -8,16 +9,14 @@ namespace PseudoLocalizer.Tests
         public void PseudoLocalize_TextIsNull_ReturnsNull()
         {
             var result = PseudoLocalizer.PseudoLocalize(null);
-
-            Assert.Null(result);
+            result.ShouldBeNull();
         }
 
         [Fact]
         public void PseudoLocalize_TextIsEmpty_ReturnsEmptyString()
         {
             var result = PseudoLocalizer.PseudoLocalize(string.Empty);
-
-            Assert.Equal(string.Empty, result);
+            result.ShouldBeEmpty();
         }
 
         [Theory]
@@ -26,8 +25,7 @@ namespace PseudoLocalizer.Tests
         public void PseudoLocalize_TextIsNotNullOrEmpty_ReturnsTransformedText(string text, string expected)
         {
             var result = PseudoLocalizer.PseudoLocalize(text);
-
-            Assert.Equal(expected, result);
+            result.ShouldBe(expected);
         }
 
         [Theory]
@@ -36,9 +34,8 @@ namespace PseudoLocalizer.Tests
         public void PseudoLocalize_TextWithVowels_ReturnsTransformedTextWithDuplicatedVowels(string text, string expected)
         {
             var result = PseudoLocalizer.PseudoLocalize(text);
-
-            Assert.Equal(expected, result);
-            Assert.True(result.Length > text.Length);
+            result.ShouldBe(expected);
+            result.Length.ShouldBeGreaterThan(text.Length);
         }
 
         [Theory]
@@ -47,9 +44,8 @@ namespace PseudoLocalizer.Tests
         public void PseudoLocalize_TextWithPlaceholder_ReturnsTransformedTextWithPlaceholder(string text, string expected)
         {
             var result = PseudoLocalizer.PseudoLocalize(text);
-
-            Assert.Equal(expected, result);
-            Assert.True(result.Length > text.Length);
+            result.ShouldBe(expected);
+            result.Length.ShouldBeGreaterThan(text.Length);
         }
 
         [Theory]
@@ -59,9 +55,16 @@ namespace PseudoLocalizer.Tests
         public void PseudoLocalize_TextWithHtmlTag_ReturnsTransformedTextWithHtmlTag(string text, string expected)
         {
             var result = PseudoLocalizer.PseudoLocalize(text);
+            result.ShouldBe(expected);
+            result.Length.ShouldBeGreaterThan(text.Length);
+        }
 
-            Assert.Equal(expected, result);
-            Assert.True(result.Length > text.Length);
+        [Fact]
+        public void PseudoLocalize_PreservesWords()
+        {
+            var text = "Hello John. How are you?";
+            var result = PseudoLocalizer.PseudoLocalize(text);
+            result.Split(' ').Length.ShouldBe(5);
         }
     }
 }
