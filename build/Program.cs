@@ -22,7 +22,7 @@ namespace Build
             Target(
                 Test,
                 DependsOn(Build),
-                () => RunAsync("dotnet", $"test tests/PseudoLocalizer.Tests/PseudoLocalizer.Tests.csproj -c Release -r ../../{ArtifactsDir} --no-build -l trx;LogFileName=PseudoLocalizer.Tests.xml --verbosity=normal"));
+                () => RunAsync("dotnet", $"test tests/PseudoLocalizer.Tests/PseudoLocalizer.Tests.csproj -c Release --no-build --verbosity=normal"));
 
             Target(
                 Pack,
@@ -30,8 +30,7 @@ namespace Build
                 ForEach("PseudoLocalizer.nuspec", "PseudoLocalizer.Source.nuspec"),
                 async nuspec =>
                 {
-                    Environment.SetEnvironmentVariable("NUSPEC_FILE", nuspec, EnvironmentVariableTarget.Process);
-                    await RunAsync("dotnet", $"pack src/PseudoLocalizer/PseudoLocalizer.csproj -c Release -o ../../{ArtifactsDir} --no-build");
+                    await RunAsync("dotnet", $"pack src/PseudoLocalizer/PseudoLocalizer.csproj /p:NuspecFile=src/PseudoLocalizer/{nuspec} -c Release -o ../../{ArtifactsDir} --no-build");
                 });
 
 
