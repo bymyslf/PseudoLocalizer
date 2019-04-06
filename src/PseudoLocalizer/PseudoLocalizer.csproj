@@ -14,7 +14,7 @@
     <NoWarn>$(NoWarn);NU5105;1701;1702;1705;1591</NoWarn>
     <LangVersion>latest</LangVersion>
     <DebugType>pdbonly</DebugType>
-    <Version>1.1.0.1</Version>
+    <Version>1.1.1</Version>
   </PropertyGroup>
 
 </Project>
