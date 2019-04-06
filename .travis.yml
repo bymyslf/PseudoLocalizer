@@ -1,0 +1,17 @@
+language: csharp
+mono: none
+sudo: required
+dotnet: 2.2.101
+branches:
+  only:
+  - master
+script: "./build.sh"
+git:
+  depth: false
+before_install:
+  - chmod +x build.sh
+matrix:
+  include:
+    - os: linux
+      dist: bionic
+    - os: osx
