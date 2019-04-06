@@ -27,12 +27,7 @@ namespace Build
             Target(
                 Pack,
                 DependsOn(Test),
-                ForEach("PseudoLocalizer.nuspec", "PseudoLocalizer.Source.nuspec"),
-                async nuspec =>
-                {
-                    await RunAsync("dotnet", $"pack src/PseudoLocalizer/PseudoLocalizer.csproj /p:NuspecFile=src/PseudoLocalizer/{nuspec} -c Release -o ../../{ArtifactsDir} --no-build");
-                });
-
+                () => RunAsync("dotnet", $"pack src/PseudoLocalizer/PseudoLocalizer.csproj -c Release -o ../../{ArtifactsDir} --no-build"));
 
             Target(Publish, DependsOn(Pack), () =>
             {

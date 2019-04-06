@@ -2,12 +2,19 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard1.1</TargetFramework>
+    <Description>Small .NET Standard Pseudol10n library.</Description>
+    <PackageId>PseudoLocalizer</PackageId>
+    <Authors>bymyslf (Luís Barbosa)</Authors>
+    <PackageProjectUrl>https://github.com/bymyslf/PseudoLocalizer</PackageProjectUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+    <PackageTags>pseudolocale;pseudolocalization;pseudol10n</PackageTags>
+    <NoWarn>$(NoWarn);NU5105;1701;1702;1705;1591</NoWarn>
+    <LangVersion>latest</LangVersion>
+    <DebugType>full</DebugType>
+    <Version>1.1.0</Version>
   </PropertyGroup>
-
-  <ItemGroup>
-    <None Update="contentFiles\cs\PseudoLocalizer.cs.pp">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
 
 </Project>
