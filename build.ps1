@@ -1,2 +1,2 @@
 # Run Build
-dotnet run --project build -c Release
+dotnet run --project build -c Release -- $args
