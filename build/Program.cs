@@ -42,7 +42,7 @@ namespace Build
                 DependsOn(Test),
                 () => RunAsync("dotnet", $"pack src/PseudoLocalizer/PseudoLocalizer.csproj -c Release -o ../../{ArtifactsDir} --no-build"));
 
-            Target(Publish, DependsOn(Pack), () =>
+            Target(Publish, DependsOn(Pack), async () =>
             {
                 var packagesToPush = Directory.GetFiles(ArtifactsDir, "*.nupkg", SearchOption.TopDirectoryOnly);
                 Console.WriteLine($"Found packages to publish: {string.Join("; ", packagesToPush)}");
@@ -58,7 +58,7 @@ namespace Build
                 {
                     try
                     {
-                        RunAsync("dotnet", $"nuget push {packageToPush} -k {apiKey} -s https://api.nuget.org/v3/index.json", noEcho: true);
+                        await RunAsync("dotnet", $"nuget push {packageToPush} -k {apiKey} -s https://api.nuget.org/v3/index.json", noEcho: true);
                     }
                     catch (NonZeroExitCodeException) { } 
                 }
