@@ -46,9 +46,9 @@ MIT
 * [Pseudolocalization to Catch i18n Errors Early](https://opensource.googleblog.com/2011/06/pseudolocalization-to-catch-i18n-errors.html)
 
 
-[travis build]: https://travis-ci.org/bymyslf/PseudoLocalizer.svg?branch=master&logo=travis
-[travis project]: https://travis-ci.org/bymyslf/PseudoLocalizer
+[travis build]: https://img.shields.io/travis/bymyslf/PseudoLocalizer/master.svg?logo=travis
+[travis project]: https://travis-ci.org/bymyslf/PseudoLocalizer/branches?master
 [appveyor build]: https://ci.appveyor.com/api/projects/status/qcol8951b78sraxs?svg=true
-[appveyor project]: https://ci.appveyor.com/project/bymyslf/pseudolocalizer
+[appveyor project]: https://ci.appveyor.com/project/bymyslf/pseudolocalizer/branch/master
 [nuget badge]: https://img.shields.io/nuget/v/PseudoLocalizer.svg
 [nuget package]: https://www.nuget.org/packages/PseudoLocalizer
