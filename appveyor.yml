@@ -9,6 +9,6 @@ branches:
 init:
 - cmd: dotnet --info
 build_script:
-- ps: .\build.ps1
+- cmd: ./build.cmd
 test: off
 deploy: off
