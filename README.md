@@ -1,4 +1,4 @@
-# PseudoLocalizer [![Build Status][travis build]][project] [![NuGet][nuget badge]][nuget package]
+# PseudoLocalizer [![Build Status][travis build]][travis project] [![Build Status][appveyor build]][appveyor project] [![NuGet][nuget badge]][nuget package]
 
 > Pseudolocalization (or pseudo-localization) is a software testing method used for testing internationalization aspects of software. Instead of translating the text of the software into a foreign language, as in the process of localization, the textual elements of an application are replaced with an altered version of the original language.
 
@@ -46,7 +46,9 @@ MIT
 * [Pseudolocalization to Catch i18n Errors Early](https://opensource.googleblog.com/2011/06/pseudolocalization-to-catch-i18n-errors.html)
 
 
-[travis build]: https://travis-ci.org/bymyslf/PseudoLocalizer.svg?branch=master
-[project]: https://travis-ci.org/bymyslf/PseudoLocalizer
+[travis build]: https://travis-ci.org/bymyslf/PseudoLocalizer.svg?branch=master&logo=travis
+[travis project]: https://travis-ci.org/bymyslf/PseudoLocalizer
+[appveyor build]: https://ci.appveyor.com/api/projects/status/qcol8951b78sraxs?svg=true
+[appveyor project]: https://ci.appveyor.com/project/bymyslf/pseudolocalizer
 [nuget badge]: https://img.shields.io/nuget/v/PseudoLocalizer.svg
 [nuget package]: https://www.nuget.org/packages/PseudoLocalizer
