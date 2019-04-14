@@ -56,9 +56,7 @@ namespace Build
                 var travisBranch = Environment.GetEnvironmentVariable("TRAVIS_BRANCH");
                 var travisPr = Environment.GetEnvironmentVariable("TRAVIS_PULL_REQUEST");
 
-                Console.WriteLine($"Travis branch: {travisBranch}");
-                Console.WriteLine($"Travis PR: {travisPr}");
-                if (!string.IsNullOrWhiteSpace(travisBranch) && travisBranch.Equals("master"))
+                if (!string.IsNullOrWhiteSpace(travisBranch) && travisBranch.Equals("master") && bool.TryParse(travisPr, out bool _))
                 {
                     return true;
                 }
