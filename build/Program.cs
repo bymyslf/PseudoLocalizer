@@ -54,8 +54,10 @@ namespace Build
             bool IsMasterBranch()
             {
                 var travisBranch = Environment.GetEnvironmentVariable("TRAVIS_BRANCH");
+                var travisPr = Environment.GetEnvironmentVariable("TRAVIS_PULL_REQUEST");
 
                 Console.WriteLine($"Travis branch: {travisBranch}");
+                Console.WriteLine($"Travis PR: {travisPr}");
                 if (!string.IsNullOrWhiteSpace(travisBranch) && travisBranch.Equals("master"))
                 {
                     return true;
