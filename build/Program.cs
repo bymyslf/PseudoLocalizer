@@ -18,14 +18,7 @@ namespace Build
 
         public static async Task Main(string[] args)
         {
-            Target(Clean, () =>
-            {
-                var packagesToDelete = Directory.GetFiles(ArtifactsDir, "*.nupkg", SearchOption.TopDirectoryOnly);
-                foreach (var package in packagesToDelete)
-                {
-                    File.Delete(package);
-                }
-            });
+            Target(Clean, CleanDirectory);
 
             Target(
                 Build,
@@ -37,12 +30,50 @@ namespace Build
                 DependsOn(Build),
                 () => RunAsync("dotnet", $"test tests/PseudoLocalizer.Tests/PseudoLocalizer.Tests.csproj -c Release --no-build --verbosity=normal"));
 
-            Target(
-                Pack,
-                DependsOn(Test),
-                () => RunAsync("dotnet", $"pack src/PseudoLocalizer/PseudoLocalizer.csproj -c Release -o ../../{ArtifactsDir} --no-build"));
+            if (IsTravis() && IsMasterBranch())
+            {
+                Target(
+                    Pack,
+                    DependsOn(Test),
+                    () => RunAsync("dotnet", $"pack src/PseudoLocalizer/PseudoLocalizer.csproj -c Release -o ../../{ArtifactsDir} --no-build"));
 
-            Target(Publish, DependsOn(Pack), async () =>
+                Target(Publish, DependsOn(Pack), PublishPackages);
+
+                Target("default", DependsOn(Pack, Publish));
+            }
+            else
+            {
+                Target("default", DependsOn(Test, Build));
+            }
+            
+            await RunTargetsAndExitAsync(args, ex => ex is NonZeroExitCodeException);
+
+            bool IsTravis()
+                => !string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable("TRAVIS_OS_NAME"));
+
+            bool IsMasterBranch()
+            {
+                var travisBranch = Environment.GetEnvironmentVariable("TRAVIS_BRANCH");
+                var travisPr = Environment.GetEnvironmentVariable("TRAVIS_PULL_REQUEST");
+
+                if (!string.IsNullOrWhiteSpace(travisBranch) && travisBranch.Equals("master") && bool.TryParse(travisPr, out bool _))
+                {
+                    return true;
+                }
+
+                return false;
+            }
+
+            void CleanDirectory()
+            {
+                var packagesToDelete = Directory.GetFiles(ArtifactsDir, "*.nupkg", SearchOption.TopDirectoryOnly);
+                foreach (var package in packagesToDelete)
+                {
+                    File.Delete(package);
+                }
+            }
+
+            async Task PublishPackages()
             {
                 var packagesToPush = Directory.GetFiles(ArtifactsDir, "*.nupkg", SearchOption.TopDirectoryOnly);
                 Console.WriteLine($"Found packages to publish: {string.Join("; ", packagesToPush)}");
@@ -62,11 +93,7 @@ namespace Build
                     }
                     catch (NonZeroExitCodeException) { }
                 }
-            });
-
-            Target("default", DependsOn(Pack, Publish));
-
-            await RunTargetsAndExitAsync(args, ex => ex is NonZeroExitCodeException);
+            }
         }
     }
 }
