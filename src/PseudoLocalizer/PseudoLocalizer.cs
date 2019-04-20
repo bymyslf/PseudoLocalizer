@@ -100,7 +100,7 @@ namespace PseudoLocalizer
             { '~', '\u02de' },
         };
 
-        private static HashSet<char> _vowels = new HashSet<char>()
+        private static readonly HashSet<char> _vowels = new HashSet<char>()
             { 'a', 'e', 'i', 'o', 'u', 'y', 'A', 'E', 'I', 'O', 'U', 'Y' };
 
         public static string PseudoLocalize(string text)
