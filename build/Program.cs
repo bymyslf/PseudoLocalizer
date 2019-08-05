@@ -30,22 +30,28 @@ namespace Build
                 DependsOn(Build),
                 () => RunAsync("dotnet", $"test tests/PseudoLocalizer.Tests/PseudoLocalizer.Tests.csproj -c Release --no-build --verbosity=normal"));
 
-            if (IsTravis() && IsMasterBranch())
-            {
-                Target(
-                    Pack,
-                    DependsOn(Test),
-                    () => RunAsync("dotnet", $"pack src/PseudoLocalizer/PseudoLocalizer.csproj -c Release -o ../../{ArtifactsDir} --no-build"));
+            Target(
+                Pack,
+                DependsOn(Build),
+                () => RunAsync("dotnet", $"pack src/PseudoLocalizer/PseudoLocalizer.csproj -c Release -o ../../{ArtifactsDir} --no-build"));
 
-                Target(Publish, DependsOn(Pack), PublishPackages);
+            Target(
+                Publish,
+                DependsOn(Pack),
+                async () =>
+                {
+                    if (IsTravis() && IsMasterBranch())
+                    {
+                        await PublishPackages();
+                    }
+                    else
+                    {
+                        await Console.Error.WriteLineAsync("Skipping publishing: not running in Travis CI and on master branch.");
+                    };
+                });
 
-                Target("default", DependsOn(Pack, Publish));
-            }
-            else
-            {
-                Target("default", DependsOn(Test, Build));
-            }
-            
+            Target("default", DependsOn(Test, Pack));
+
             await RunTargetsAndExitAsync(args, ex => ex is NonZeroExitCodeException);
 
             bool IsTravis()

@@ -5,7 +5,7 @@ dotnet: 2.2.101
 branches:
   only:
   - master
-script: "./build.sh"
+script: "./build.sh default publish"
 git:
   depth: false
 before_install:
