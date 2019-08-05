@@ -40,7 +40,7 @@ namespace Build
                 DependsOn(Pack),
                 async () =>
                 {
-                    if (IsTravis() && IsMasterBranch())
+                    if (IsMasterBranchInTravis())
                     {
                         await PublishPackages();
                     }
@@ -54,10 +54,7 @@ namespace Build
 
             await RunTargetsAndExitAsync(args, ex => ex is NonZeroExitCodeException);
 
-            bool IsTravis()
-                => !string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable("TRAVIS_OS_NAME"));
-
-            bool IsMasterBranch()
+            bool IsMasterBranchInTravis()
             {
                 var travisBranch = Environment.GetEnvironmentVariable("TRAVIS_BRANCH");
                 var travisPr = Environment.GetEnvironmentVariable("TRAVIS_PULL_REQUEST");
